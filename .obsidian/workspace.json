@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "b5a6da759b435e4f",
+    "type": "split",
+    "children": [
+      {
+        "id": "9cd4d05cf3c52246",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "80d22ec9762760d1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Step1_Analysis/Step 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Step 1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f0fb2b5e4da28a31",
+    "type": "split",
+    "children": [
+      {
+        "id": "887ac5e443dfc465",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "389e0c9dcd88b697",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "41dfc2648ba325f7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "48dffe8f2d3983fe",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "316fd7824e27ec8e",
+    "type": "split",
+    "children": [
+      {
+        "id": "c33549941f83d07c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ee8040c16d3b0997",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Step1_Analysis/Step 1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Step 1"
+            }
+          },
+          {
+            "id": "0c992a7705541a3f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Step1_Analysis/Step 1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Step 1"
+            }
+          },
+          {
+            "id": "98c897f7d9662177",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "cecf9bf76ca81410",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Step1_Analysis/Step 1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Step 1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "80d22ec9762760d1",
+  "lastOpenFiles": [
+    "Step1_Analysis/Block Diagram.png",
+    "Step1_Analysis/Step 1.md",
+    "Step2_Data/Step 2.md",
+    "Step3_FlowCharts/5_Write_LOG.png",
+    "Step3_FlowCharts/4_Alert_Staff.png",
+    "Step3_FlowCharts/3_Dispense_Food.png",
+    "Step3_FlowCharts/2_Start_UP.png",
+    "Step3_FlowCharts/1_Main_Logic.png"
+  ]
+}
