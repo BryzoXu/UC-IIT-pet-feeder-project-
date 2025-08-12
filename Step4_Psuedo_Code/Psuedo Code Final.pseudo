@@ -1,0 +1,156 @@
+// =======================
+// Inputs
+// =======================
+import RTC (DD/MM/YY, HH:MM)        // Real-time clock module and date/time format
+import Sensor                       // Measurse Food in Bowl and Food in Hopper
+import UI_Display                   // Handles user interface display and prompts
+import Settings_Config              // reads saved config file
+import button                       // Manual override button
+
+//-----------------------
+//Global Variables
+//-----------------------
+
+Device_id = "001"                   // Unique identifier for this feeder
+error_code = None                   // Stores current error code (if any)
+error_state = False                 // True if the system is currently in an error state
+Is_Working = True                   // Main loop control flag
+error_count = 0                     // Tracks consecutive errors before shutdown
+
+
+//-----------------------
+//SUBPROCESS'S
+//-----------------------
+
+
+DEFINE subprocess(Start_Up) 
+    UI_Display("Enter Setup mode?" "press manual trigger to connect")
+    timer = 0 
+    for timer = 0 to 5 step 0.5 seconds
+        if manual_trigger == True
+            UI_Display("Connecting to App")
+            Settings_Config = Receive Settings Via App
+            break
+    wait(0.5 seconds)
+    UI_Display("Starting normal operation")
+    RETURN Settings_Config
+// Start up process
+// Prompets user to enter setup mode
+// Waits 5 seconds for used to accept the prompt by pressing manual trigger to connect to the app
+// If connected updates the setting_config file from app, otherwise uses the existing file
+// Then starts normal operations
+
+
+DEFINE subprocess(Dispense_FOOD)
+    Time = RTC
+    Read Settings_Config
+    Read(Bowl_Weight & Hopper Weight Sensors)
+    if Hopper Weight Sensors <= 100grams
+        Set error_code = ER01           // No food in hopper
+        Set error_state = True
+    else if Bowl_Weight Sensors > 0gram
+        Set error_code = ER02           // Food in bowl already
+        Set error_state = True
+    else 
+        Open Servo
+        Wait(Dispense Duration)
+        Close Servo
+        if  Bowl_Weight == 0gram 
+            Set error_code = ER03       // Food didnt dispense
+            Set error_state = True
+        else 
+            Set error_state = False
+RETURN error_state & error_code
+// Dispensing process:
+// - Reads configuration and sensor data.
+// - Checks hopper supply, reports ER01 if empty.
+// - Checks if bowl already has food, reports ER02 if so.
+// - Dispenses food via servo, checks for weight change, else reports ER03.
+// - Returns error state and error code for logging/alerts.
+
+
+
+DEFINE subprocess(Alert_Staff)
+    UI_Display("ERROR: " + error_code)
+    sends alert via app
+// Alerts staff about any error:
+// - Displays the error code on the LCD.
+// - Sends the same alert to the connected app
+    
+
+DEFINE subprocess(Write_LOG) 
+    timestamp = Read RTC (DD/MM/YY, HH:MM)
+    Dispense_Type = Read Dispense type
+    Sensor_DATA = Read(Bowl_Weight & Hopper Weight Sesors)
+    if error_state == True
+        Error = error_state & error_code
+    else 
+        Error = error_state
+    Read Settings_Config 
+        User_Settings_DATA = Settings_Config
+    Write to log.txt(
+        - timestamp
+        - Device_id
+        - User_Settings_DATA
+        - Sensor_DATA
+        - Dispense_Type
+        - Error)
+RETURN LOG.txt
+// Logging process:
+// - Collects timestamp, device ID, user settings, sensor readings, dispense type, and error status.
+// - Appends the data to log.txt for staff review or troubleshooting.
+// - Log can be accessed locally or sent to the app.
+
+
+//-----------------------
+//Main Program Code
+//-----------------------
+
+Settings_Config = Run subprocess(Start_Up)          // Runs startup 
+Read Settings_Config                                // Reads Config file
+While Is_Working = True                             // Main loop
+       UI_Display("Running")
+ 
+    if RTC(Real time clock) == Feeding time         // Scheduled feeding check
+            Dispense_Type = "schedualed"
+            Run subprocess(Dispense_FOOD)
+            get "error_state & error_code" from Dispense_food  
+
+    else 
+        for manual_check_timer = 0 to 29 step 1 second       
+            if manual_trigger == True               // Manual Feeding check in 30 second loop
+                Dispense_Type = "Manual"                            
+                manual_trigger = False                          
+                Run subprocess(Dispense_FOOD)
+                get "error_state & error_code" from Dispense_food  
+                break  
+            Wait(1 second)
+        CONTINUE
+
+    if error_state == True                          //check for any errors 
+        Run(Alert_staff)                            //Runs alert staff function and increments the error counter by 1
+        error_count = error_count + 1     
+    else
+        wait(10 mins)                               // if there are no error messure, waits 10 mins after the food was dispense and checks if the animal
+        if bowl_wieght > 0                          // ate, if animal didnt eat, sends and error and runs alert staff function
+            Set error state = True
+            Set error_code = ER04                   //animal didnt eat
+            Run (Alert_staff)
+
+    Run(write_LOG)                                 // Logs the cycle
+    if error_count = >3                            // Stops system after 3 errors
+        Is_Working = False                        
+        UI_Display("ERROR LIMIT REACHED!")          // UI displays error message 
+
+    CONTINUE                                        //System runs in a constant loop until stopped or error limit reached
+    
+
+
+        
+
+
+
+    
+
+
+    
