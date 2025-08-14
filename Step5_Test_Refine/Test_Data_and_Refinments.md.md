@@ -48,8 +48,8 @@ No refinements needed, logic performs as intended in this scenario.
 
 *Expected Outputs*
 - Servo Controls: Doesn't Operate
-- Staff Alert system: Send Error "ER01"
-- UI_Display: **"Error ER01"**
+- Staff Alert system: Send Error "ER02"
+- UI_Display: **"Error ER02"**
 - Log: 
 	Date & Time: 10/08/2025, 08:00
 	Device ID***: 001
@@ -61,12 +61,12 @@ No refinements needed, logic performs as intended in this scenario.
 		Hopper Weight: 1300g
 		Bowl Weight: 70g
 	Dispense Type: scheduled
-	Error State: TRUE, ER01
+	Error State: TRUE, ER02
 	
 *Logic Discussion:*
-2nd Scheduled feeding time was triggered correctly but there is something remaining in the animals bowl causing the bowl sensor to still read 70g, system triggered Error State ER01 alerting staff and not dispensing any more food to avoid over feeding 
+2nd Scheduled feeding time was triggered correctly but there is something remaining in the animals bowl causing the bowl sensor to still read 70g, system triggered Error State ER02 alerting staff and not dispensing any more food to avoid over feeding 
 *Refinement*
-Adding a retry function to the system to allow it to try a scheduled dispense again when in ER01, currently anytime there is an error the system doesn't attempt to feed the animal again until the next scheduled feeding time. A retry function would allow the animal time to eat any leftover while still ensuring they are receiving the intended amount of food. 
+Adding a retry function to the system to allow it to try a scheduled dispense again when in ER02, currently anytime there is an error the system doesn't attempt to feed the animal again until the next scheduled feeding time. A retry function would allow the animal time to eat any leftover while still ensuring they are receiving the intended amount of food. 
 
 ---
 
@@ -119,8 +119,8 @@ Currently the eating window is hard codes as 10 mins, its possible some animals 
 
 *Expected Outputs*
 - Servo Controls:  Doesn't Operate
-- Staff Alert system: Send Error "ER02"
-- UI_Display: **Error "ER02"**
+- Staff Alert system: Send Error "ER01"
+- UI_Display: **Error "ER01"**
 - Log: 
 	Date & Time: 11/08/2025, 08:00
 	Device ID: 001
@@ -132,7 +132,7 @@ Currently the eating window is hard codes as 10 mins, its possible some animals 
 		Hopper Weight: 60g
 		Bowl Weight: 0g
 	Dispense Type: scheduled
-	Error State: TRUE, ER02
+	Error State: TRUE, ER01
 	
 *Logic Discussion:*
 Scheduled feeding time triggered successfully but when attempted to dispenses food the system noted the hopper didn't have enough food remaining (<100gram), triggering Error ER02, alerting staff.  
