@@ -1,5 +1,6 @@
 # Ryan Xuereb u3293430
 # Automated Feeder Firmware (Pseudo Code Overview)
+*This Readme file was generated using ChatGPT 5 as part of the "Part 3 The Challange" step for this assignment*
 
 This project defines the logic for an automated animal feeder system.  
 It handles scheduled and manual feedings, monitors food levels, detects errors, and alerts staff when intervention is needed.

@@ -13,6 +13,8 @@ Copilot provided me with a range of SBCs and hardware components and explained t
 2) Ask copilot to write me professional README.md 
 
 I asked copilot to write me a professional README.md file based on my code and flow charts id provided and the previous discussion about physical hardwares, it attempted to do so but had several error and produced the document in a messy state, half being written in markdown (.md) and half written in YAML. I Copied what Copilot produced into ChatGPT 4 which was was able to converte Copilots attempt into an complete README.md document. 
+See **"Copilot_Attempt_README"**
+
 I also ask ChatGPT 5 to write me a README.md document based only on my psuedo code. 
 
 I used the Prompt
@@ -20,4 +22,4 @@ I used the Prompt
 "Write me a Professional README.md file base on my psuedo code "*Code*" (I provided ChatGPT 5 with a full copy of my code.)
 
 Its reply with the current copy of my README.md file being used in this project
-I choose to use this version as it feels like better reflection of the system in it current state. 
+I choose to use this version as it feels like a better reflection of the system in it current state. 
