@@ -1,19 +1,17 @@
-Copilot_Attempt_README.md
-
-# Programmable Pet Feeder System
+# 🐾 Programmable Pet Feeder System
 
 A smart, scalable, and affordable automated pet feeder designed for shelters and multi-animal facilities. This system dispenses food at scheduled times, monitors food levels, detects errors, and alerts staff — all while being configurable via a central server or app.
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
 This project was developed for an *Intro to IT* assignment to demonstrate embedded systems design, logic development, and networked device integration.  
 The feeder unit is powered by a **Raspberry Pi Zero 2 W** and communicates with a central server for configuration, logging, and alerts.
 
 ---
 
-## Problem Statement
+## 🎯 Problem Statement
 
 Animal shelters require a reliable feeder system that:
 
@@ -24,17 +22,22 @@ Animal shelters require a reliable feeder system that:
 
 ---
 
-## System Architecture
+## 🧠 System Architecture
 
-### Feeder Unit (Raspberry Pi Zero 2 W)
+### 🟦 Feeder Unit (Raspberry Pi Zero 2 W)
 - Runs the core logic and controls sensors and actuators.
 - Displays status and errors via LCD.
 - Sends logs and error codes to a central server.
 - Receives configuration updates from the server.
 
+### 🟨 Central Server (e.g., Raspberry Pi 4, NAS, or Cloud)
+- Hosts a dashboard/app for staff.
+- Stores logs and device configurations.
+- Aggregates alerts and pushes updates to feeder units.
+
 ---
 
-## Hardware Components
+## ⚙️ Hardware Components
 
 | Component                 | Purpose                                           |
 |---------------------------|---------------------------------------------------|
@@ -48,7 +51,7 @@ Animal shelters require a reliable feeder system that:
 
 ---
 
-## Core Features
+## 🔄 Core Features
 
 - **Scheduled Feeding** – Dispenses food based on user-defined times.  
 - **Manual Override** – Allows staff to trigger feeding manually.  
@@ -60,7 +63,7 @@ Animal shelters require a reliable feeder system that:
 
 ---
 
-## Sample Test Cases
+## 🧪 Sample Test Cases
 
 The system has been tested under scenarios including:
 
@@ -74,7 +77,7 @@ Each test includes expected outputs, logic discussion, and refinement suggestion
 
 ---
 
-## Future Enhancements
+## 🔧 Future Enhancements
 
 - **Retry Logic** – Allow reattempts after certain errors (e.g., bowl not empty).  
 - **Configurable Eating Window** – Adjustable time allowed for an animal to eat.  
@@ -84,24 +87,27 @@ Each test includes expected outputs, logic discussion, and refinement suggestion
 
 ---
 
-## File Structure
+## 📁 File Structure
+--- 
+*This sections was generated in plan text not .md*
 
-**/feeder-firmware/**  
-├── **main.py** – Core logic for Raspberry Pi Zero 2 W  
-├── **config.json** – Device configuration  
-├── **log.txt** – Local event log  
-└── **README.md** – Project documentation  
+/feeder-firmware/
+├── main.py # Core logic for Raspberry Pi Zero 2 W
+├── config.json # Device configuration
+├── log.txt # Local event log
+└── README.md # Project documentation
+
 
 ---
-
-## Communication Protocol
+*This section was generated seperatly from above and was reported by Copilot as being .yaml format* 
+## 📡 Communication Protocol
 
 - **HTTP / MQTT** – Used to send logs and receive config from the server.  
 - **JSON** – Standard format for data exchange.  
 
 ---
 
-## Tools & Languages
+## 🛠️ Tools & Languages
 
 - **Python 3** – Device logic  
 - **Flask / Node.js** – Optional server-side  
@@ -110,10 +116,9 @@ Each test includes expected outputs, logic discussion, and refinement suggestion
 
 ---
 
-## Contact
+## 📬 Contact
 
 For questions or collaboration, please contact:  
 
-**Ryan Xuereb** 
-u3293430@uni.canberra.edu.au
+**Ryan Xuereb**  
 *Intro to IT – Student Developer*
