@@ -205,7 +205,7 @@ It also possible for the servo to jam open allowing the hopper to constantly emp
 	Error State: Error "ER04"
 	
 *Logic Discussion*
-In this case the system operated in the same way to example 3 but when internally the system has been tracking the number errors and has entered a "Error Limit mode" as there have been more then 3 errors since the last time the device was started and is waiting for staff intervention to fix the errors.
+In this case the system operated in the same way to example 3 but internally the system has been tracking the number errors and has entered a "Error Limit mode" as there has been more then 3 errors since the last time the device was started and is waiting for staff intervention to fix the errors.
 
 ---
 
@@ -217,10 +217,10 @@ After a review I've noted a oversite in the assumption around monitoring how muc
 hopper weight = read hopper sensor
 set servo to open 
 
-while run is true 
+while True
 	if read hopper_sensor <= hopper_weight - dispense_amount
 		set servo to closed
-		run = false
+		break
 
 ```
 
@@ -230,10 +230,10 @@ Explanation
 reads hopper sensor and store it as "hopper weight"
 Open servo to start dispensing food
 
-While run is true(loop)
+While True (constant loop)
 	if hopper sensor weight is less then or equal to hopper_weight minus dispense_amount 
-		Closes servo
-		sets run to false ending the loop
+		then Closes servo
+		leave the loop
 ```
 
 
