@@ -31,7 +31,7 @@ DEFINE subprocess(Start_Up)
             UI_Display("Connecting to App")
             Settings_Config = Receive Settings Via App
             break
-    wait(0.5 seconds)
+    	wait(0.5 seconds)
     UI_Display("Starting normal operation")
     RETURN Settings_Config
 // Start up process
